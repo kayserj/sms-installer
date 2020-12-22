@@ -23,7 +23,7 @@ be any device capable of running ansible.  This project assumes you have a funct
 
 #### On the Remote Server
 1. Install Ubuntu Server 20.04, configure an IP address, a user account (ex: foghornleghorn), and install the openssh-server package, during installation.
-2. Give the user (ex: foghornleghorn) password-less sudo privledges on the Ubuntu 20.04 server.
+2. Give the user (ex: foghornleghorn) password-less sudo privileges on the Ubuntu 20.04 server.
 
 Edit visudo
 ```
@@ -37,7 +37,7 @@ foghornleghorn     ALL=(ALL) NOPASSWD:ALL
 
 
 #### On the Ansible Controller
-1. Establish ssh keybased authentication between the ansible controller and the remote server
+1. Establish ssh key-based authentication between the ansible controller and the remote server
 
 Type the following, replacing server_ip with the ip address of the remote server
 
@@ -104,7 +104,7 @@ You're other option is to use xQuartz to establish X11 forwarding.  Install fire
 
 Sabnzbd has been templated to prevent such issues, and the configuration wizard should be accessible from remote networks.
 
-If you want a more recent version of the software being used, replace the URL in these variables with the new full length URL download location, in the sms-install.yml file.  (hint, it'll probably be similar with the exception of the new version number, and should still end in the file extension.)
+If you want a more recent version of the software being used, replace the URL in these variables with the new full-length URL download location, in the sms-install.yml file.  (hint, it'll probably be similar with the exception of the new version number, and should still end in the file extension.)
 
  ``` 
   vars:
