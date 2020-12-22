@@ -1,0 +1,5 @@
+---
+- name: Download and install plex server
+  apt:
+    deb: '{{ plex_dl_url}}'
+  become: true

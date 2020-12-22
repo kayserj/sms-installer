@@ -1,0 +1,23 @@
+---
+- name: Git clone Sickgear repo
+  git:
+    repo: https://github.com/SickGear/SickGear.git
+    dest: /opt/sickgear
+  become: true
+
+- name: Changing owner of sickgear dir
+  file:
+    path: /opt/sickgear
+    mode: '0755'
+  become: true
+
+- name: Templating Sickgear Service to /lib/systemd/system
+  template: src=sickgear.service.j2 dest=/lib/systemd/system/sickgear.service
+  become: true
+
+- name: Start Sickgear
+  systemd:
+    name: sickgear
+    state: started
+    enabled: yes
+  become: true

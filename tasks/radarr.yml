@@ -1,0 +1,25 @@
+---
+- name: Installing additional application packages
+  apt: name={{ item }} state=latest
+  loop:
+    - mono-devel
+    - mediainfo
+  become: true
+
+- name: Get Radarr and tar it to install directory
+  unarchive:
+    src: '{{ radarr_dl_url }}'
+    dest: /opt
+    remote_src: yes
+  become: true
+
+- name: Copying Radarr service to systemd/system
+  template: src=radarr.service.j2 dest=/lib/systemd/system/radarr.service
+  become: true
+
+- name: Start Radarr
+  systemd:
+    name: radarr
+    state: started
+    enabled: yes
+  become: true

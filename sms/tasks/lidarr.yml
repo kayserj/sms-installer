@@ -1,0 +1,18 @@
+---
+- name: Get Lidarr and tar it to install directory
+  unarchive:
+    src: '{{ lidarr_dl_url }}'
+    dest: /opt
+    remote_src: yes
+  become: true
+
+- name: Copying Lidarr service to systemd/system
+  template: src=lidarr.service.j2 dest=/lib/systemd/system/lidarr.service
+  become: true
+
+- name: Start Lidarr
+  systemd:
+    name: lidarr
+    state: started
+    enabled: yes
+  become: true

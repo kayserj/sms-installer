@@ -1,0 +1,28 @@
+---
+- name: Start Sickgear
+  systemd:
+    name: sickgear
+    state: started
+    enabled: yes
+  become: true
+
+- name: Start Radarr
+  systemd:
+    name: radarr
+    state: started
+    enabled: yes
+  become: true
+
+- name: Start Sabnzbdplus
+  systemd:
+    name: sabnzbdplus
+    state: started
+    enabled: yes
+  become: true
+
+- name: Start Lidarr
+  systemd:
+    name: lidarr
+    state: started
+    enabled: yes
+  become: true

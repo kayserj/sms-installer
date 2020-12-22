@@ -1,0 +1,7 @@
+[srv_grp]
+server_ip   #Enter your server IP or resolvable name here.
+
+[srv_grp:vars]
+ansible_connection=ssh 
+ansible_user="{{ srv_usr }}" 
+ansible_python_interpreter=/usr/bin/python3

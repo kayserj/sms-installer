@@ -1,0 +1,51 @@
+---
+- name: Installing the sabnzbdplus repo
+  apt_repository:
+    repo: ppa:jcfp/nobetas
+    state: present
+    filename: 'sabnzbdplus'
+    update_cache: 'yes'
+  become: true
+
+- name: Installing the SABYenc repo
+  apt_repository:
+    repo: ppa:jcfp/sab-addons
+    state: present
+    filename: 'python-sabyenc'
+    update_cache: 'yes'
+  become: true
+
+- name: Installing sabnzbdplus
+  apt: name={{item}} state=latest
+  loop:
+    - sabnzbdplus
+    - par2-tbb
+    - python3-sabyenc
+  become: true
+
+- name: "Make Sabnzbd Directory"
+  file:
+    path: /root/.sabnzbd
+    state: directory
+  become: true
+  register: sabnzbd_dir
+
+- name: Copying sabnzbd sabnzbd.ini to /root/.sabnzbd/sabnzbd.ini
+  template: src=sabnzbd.ini.j2 dest=/root/.sabnzbd/sabnzbd.ini
+  become: true
+  tags: SABsettings
+  
+- name: Editing sabnzbd autostart user
+  lineinfile:
+    path: /etc/default/sabnzbdplus
+    regexp: '^USER='
+    line: 'USER=root'
+    state: present
+  become: true
+
+- name: Start Sabnzbdplus
+  systemd:
+    name: sabnzbdplus
+    state: started
+    enabled: yes
+  become: true

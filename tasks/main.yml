@@ -1,0 +1,54 @@
+---
+# I tried to use the proper apt-key module, but it kept erroring, hence the command module
+- name: Add Mono Apt signing key
+  command: 'sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF'
+
+- name: Add Mono repository into sources list
+  apt_repository:
+    repo: deb https://download.mono-project.com/repo/ubuntu stable-focal main
+    state: present
+  become: true
+
+- name: Installing application packages
+  apt: name={{ item }} state=latest
+  loop:
+    - python
+    - python-lxml
+    - python3-pip
+    - git-core
+    - python-cheetah
+    - software-properties-common
+    - unrar-free
+    - openssl
+    - libssl-dev
+    - mono-devel
+    - gnupg
+    - ca-certificates
+    - curl
+    - git
+    - python3-minimal
+    - apt-transport-https
+    - software-properties-common
+    - ca-certificates
+    - curl
+  become: true
+
+- name: Install Plex
+  import_tasks: plex.yml
+  when: plex_go == 'y'
+
+- name: Install Sabnzbd
+  import_tasks: sabnzb.yml
+  when: sab_go == 'y'
+
+- name: Install Sickgear
+  import_tasks: sickgear.yml
+  when: sick_go == 'y'
+
+- name: Install Radarr
+  import_tasks: radarr.yml
+  when: radarr_go == 'y'
+
+- name: Install Lidarr
+  import_tasks: lidarr.yml
+  when: lidarr_go == 'y'

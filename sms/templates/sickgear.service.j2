@@ -1,0 +1,15 @@
+[Unit]
+Description=SickGear Service
+
+[Service]
+User=root
+Group=root
+
+Environment=PYTHONUNBUFFERED=true
+ExecStart=/usr/bin/python3 /opt/sickgear/sickgear.py --systemd --datadir=/opt/sickgear/data
+KillMode=process
+Restart=on-failure
+WorkingDirectory=/opt/sickgear
+
+[Install]
+WantedBy=multi-user.target

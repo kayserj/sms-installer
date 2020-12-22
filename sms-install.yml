@@ -1,0 +1,62 @@
+---
+- hosts: localhost
+  any_errors_fatal: false
+  gather_facts: false
+
+  tasks:
+  - name: Instructions Warning
+    debug:
+      msg:
+       - "Check Readme.md for Instructions on how to use"
+       - "TL;DR:"
+       - "Run from ansible controller against an Ubuntu 20.04 server. Need ssh key-based auth and passwordless sudo"
+       - "Playbook will download and install plex, sabnzbd, sickgear, radarr, and lidarr onto the remote server"
+
+- hosts: srv_grp
+  any_errors_fatal: false
+  gather_facts: true
+  roles:
+   - sms
+  
+  vars:
+    plex_dl_url: 'https://downloads.plex.tv/plex-media-server-new/1.21.1.3830-6c22540d5/debian/plexmediaserver_1.21.1.3830-6c22540d5_amd64.deb'
+    radarr_dl_url: 'https://github.com/Radarr/Radarr/releases/download/v0.2.0.1504/Radarr.develop.0.2.0.1504.linux.tar.gz'
+    lidarr_dl_url: 'https://github.com/lidarr/Lidarr/releases/download/v0.6.2.883/Lidarr.develop.0.6.2.883.linux.tar.gz'
+
+  vars_prompt:
+    - name: "srv_usr"
+      prompt: "Enter user account for ansible to ssh into, and configure, the Streaming Media Server"
+      private: no
+      unsafe: yes
+      default: 'foghornleghorn'
+
+    - name: "plex_go"
+      prompt: "Install Plex? y|n"
+      private: no
+      unsafe: yes
+      default: 'y'
+
+    - name: "sick_go"
+      prompt: "Install Sickgear? y|n"
+      private: no
+      unsafe: yes
+      default: 'y'
+
+    - name: "radarr_go"
+      prompt: "Install Radarr? y|n"
+      private: no
+      unsafe: yes
+      default: 'y'
+
+    - name: "lidarr_go"
+      prompt: "Install Lidarr? y|n"
+      private: no
+      unsafe: yes
+      default: 'y'
+    
+    - name: "sab_go"
+      prompt: "Install Sabnzbd? y|n"
+      private: no
+      unsafe: yes
+      default: 'y'
+      
