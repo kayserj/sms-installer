@@ -2,16 +2,11 @@
 
 The sms-installer is a collective of ansible tasks that will download and install the software necessary to run the following applications.
 
-**Plex Media Server** 
-
-**Sabnzbd** 
-
-**Sickgear** 
-
-**Radarr** 
-
-**Lidarr** 
-
+**Plex Media Server**  
+**Sabnzbd**  
+**Sickgear**  
+**Radarr**  
+**Lidarr**  
 
 ## Getting Started
 
@@ -116,11 +111,11 @@ If you want a more recent version of the software being used, replace the URL in
 ### Specs
 These are the hardware/software specs I use on my personal server, which is a VM running in ESXi7.0
 
-1 vCPU (physical cpu is core i7) 
-6G Memory 
-25G vmdk - OS and applications 
-120G vmdk - Scratch disk for downloads and post-processing 
-5TB iscsi nas storage - Media library locations 
+1 vCPU (physical cpu is core i7)  
+6G Memory  
+25G vmdk - OS and applications  
+120G vmdk - Scratch disk for downloads and post-processing  
+5TB iscsi nas storage - Media library locations  
 
 
 ### Built With
