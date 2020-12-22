@@ -2,11 +2,11 @@
 
 The sms-installer is a collective of ansible tasks that will download and install the software necessary to run the following applications.
 
-**Plex Media Server
-**Sabnzbd
-**Sickgear
-**Radarr
-**Lidarr
+**Plex Media Server** 
+**Sabnzbd** 
+**Sickgear** 
+**Radarr** 
+**Lidarr** 
 
 ## Getting Started
 
