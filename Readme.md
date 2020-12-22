@@ -100,7 +100,7 @@ https://support.plex.tv/articles/200288586-installation/
 
 Essentially you need to setup an SSH tunnel to trick the server into thinking you're local to it.  Browse to the section on allowing remote networks, and add your remote networks to this allow list. 
 
-You can also use xQuartz to establish X11 forwarding.  By installing a webbrowser on the remote server, you can X11 forward that browswer to your desktop.
+You can also use xQuartz to establish X11 forwarding.  By installing a web browser on the remote server, you can X11 forward that browswer to your desktop.
 
 Sabnzbd has been templated to prevent such issues, and the configuration wizard should be accessible from remote networks.
 
@@ -116,11 +116,11 @@ If you want a more recent version of the software being used, replace the URL in
 ### Specs
 These are the hardware/software specs I use on my personal server, which is a VM running in ESXi7.0
 
-1 vCPU (physical cpu is core i7)
-6G Memory
-25G vmdk - OS and applications
-120G vmdk - Scratch disk for downloads and post-processing
-5TB iscsi nas storage - Media library locations
+1 vCPU (physical cpu is core i7) 
+6G Memory 
+25G vmdk - OS and applications 
+120G vmdk - Scratch disk for downloads and post-processing 
+5TB iscsi nas storage - Media library locations 
 
 
 ### Built With
