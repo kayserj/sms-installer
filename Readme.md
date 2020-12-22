@@ -35,7 +35,7 @@ add the below to the bottom of the file, save, and exit.
 foghornleghorn     ALL=(ALL) NOPASSWD:ALL
 ```
 
-See Notes below for server spec recommendations.
+See Specs below for server spec recommendations.
 
 #### On the Ansible Controller
 1. Establish ssh key-based authentication between the ansible controller and the remote server
