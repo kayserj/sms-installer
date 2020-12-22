@@ -35,6 +35,7 @@ add the below to the bottom of the file, save, and exit.
 foghornleghorn     ALL=(ALL) NOPASSWD:ALL
 ```
 
+See Notes below for server spec recommendations.
 
 #### On the Ansible Controller
 1. Establish ssh key-based authentication between the ansible controller and the remote server
@@ -92,15 +93,14 @@ Lidarr
 http://server_ip:8686/
 
 
-### Notes and Caveats
+### Notes
 If you're running these applications on a server that is not local to you, meaning, you're not on the same IP subnet, you might run into issues accessing or configuring your plex application.  In one instance, the server was browsable, but not able to add itself as a server (error on the server said to install plex media server).  To resolve this, read the section "On a different network" at this URL.
 
 https://support.plex.tv/articles/200288586-installation/
 
 Essentially you need to setup an SSH tunnel to trick the server into thinking you're local to it.  Browse to the section on allowing remote networks, and add your remote networks to this allow list. 
 
-You're other option is to use xQuartz to establish X11 forwarding.  Install firefox on the GUI-less server "sudo apt install firefox", and forward the firefox app on the server to your laptop or pc. Browsing through xQuartz to localhost:32400/web/index.html will bring up the plex server on your laptop or pc, as if you were on the server itself.   
-
+You can also use xQuartz to establish X11 forwarding.  By installing a webbrowser on the remote server, you can X11 forward that browswer to your desktop.
 
 Sabnzbd has been templated to prevent such issues, and the configuration wizard should be accessible from remote networks.
 
@@ -112,6 +112,15 @@ If you want a more recent version of the software being used, replace the URL in
     radarr_dl_url: 'https://github.com/Radarr/Radarr/releases/download/v0.2.0.1504/Radarr.develop.0.2.0.1504.linux.tar.gz'
     lidarr_dl_url: 'https://github.com/lidarr/Lidarr/releases/download/v0.6.2.883/Lidarr.develop.0.6.2.883.linux.tar.gz'
 ```
+
+### Specs
+These are the hardware/software specs I use on my personal server, which is a VM running in ESXi7.0
+
+1 vCPU (physical cpu is core i7)
+6G Memory
+25G vmdk - OS and applications
+120G vmdk - Scratch disk for downloads and post-processing
+5TB iscsi nas storage - Media library locations
 
 
 ### Built With
